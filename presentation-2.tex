@@ -64,171 +64,191 @@
 \tableofcontents{}
 \end{frame}
 
-\section{Preliminaries}
+\section{Preliminary Results of Integration}
 
-\subsection{Introductions}
-\begin{frame}{Kevin Chen}
+\subsection{Integration}
+\begin{frame}{Semi-Ideal SCaM Overview}
 \begin{itemize}
-\item Board Game Fanatic
-\item Teaching EE16B
-\item Perpetually trying to bring people to bowling or rock climbing
-\item Fond of learning mostly-useless skills, like lock-picking
+\item Made individual blocks with real components, but ideal op-amps
+\item Tested each block separately, and met specs
+\item Connected blocks together and dealt with loading issues
+\item SCaM is alive!
+\item Slowly adding completed, real op-amp blocks into the integration one by one to isolate problems caused by individual blocks \begin{itemize}
+\item Strong Arm Latch
+\item V$_{ref}$ regulator
+\item PGA*
+\item Digital regulator*
+\end{itemize}
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{Avi Pandey }
+\subsection{Error Results}
+
+\begin{frame}{Ideal Full System LSB Error I}
 \begin{itemize}
-\item Teaching EE16A
-\item Tennis Enthusiast
-\item Have taken apart and put back together an engine before (and gotten it to work)
-\item Learned useless skills from Kevin (Like using a butterfly knife)
+\item Selected analog input of 100 mV DC
+\item PGA set to gain of 8
+\item Tabulated worst case error in number of LSB
 \end{itemize}
+\begin{center}
+Battery Voltage \\
+\begin{tabular}{|c|c|c|c|}
+\hline
+& 1.6 V & 2.4 V & 3.2 V \tabularnewline \hline
+70 $^\circ$C & & & \tabularnewline 
+\hline
+25 $^\circ$C & & & \tabularnewline
+\hline
+0 $^\circ$C & & & \tabularnewline 
+\hline 
+\end{tabular}
+\end{center}
 \end{frame}
 %
-\begin{frame}{Kevin Zheng}
+
+\begin{frame}{Ideal Full System LSB Error II}
 \begin{itemize}
-\item Open-source developer and FreeBSD contributor
-\item Teaching EE 198: Hands-On Practical Electronics
-\item Amateur radio operator
-\item Tanguero
+\item Selected temperature sensor input
+\item PGA set to gain of 1
+\item Tabulated worst case error in number of LSB
 \end{itemize}
+\begin{center}
+Battery Voltage \\
+\begin{tabular}{|c|c|c|c|}
+\hline
+& 1.6 V & 2.4 V & 3.2 V \tabularnewline \hline
+70 $^\circ$C & & & \tabularnewline 
+\hline
+25 $^\circ$C & & & \tabularnewline
+\hline
+0 $^\circ$C & & & \tabularnewline 
+\hline 
+\end{tabular}
+\end{center}
 \end{frame}
+%
 
-\subsection{Block Diagram}
-\begin{frame}{Block Diagram}
-
-\begin{figure}
-
-\includegraphics[width=0.7\linewidth]{block-diagram}
-
-\end{figure}
-
-\end{frame}
-
-\section{Project Plans}
-
-\subsection{Block Specifications}
-\begin{frame}{Band Gap \& Temperature Sensor}
-\begin{block}{Basic Specs}
+\begin{frame}{PGA LSB Error}
 \begin{itemize}
-\item 1.2 V $\pm$ 5 mV across 0-70 $^\circ$C
-\item PTAT voltage output
+\item Input of 200 mV
+\item PGA set to gain of 4
+\item Tabulated worst case error in number of LSB
+\end{itemize}
+\begin{center}
+Battery Voltage \\
+\begin{tabular}{|c|c|c|c|}
+\hline
+& 1.6 V & 2.4 V & 3.2 V \tabularnewline \hline
+70 $^\circ$C & & & \tabularnewline 
+\hline
+25 $^\circ$C & & & \tabularnewline
+\hline
+0 $^\circ$C & & & \tabularnewline 
+\hline 
+\end{tabular}
+\end{center}
+\end{frame}
+%
+
+\section{Progress and Design Decisions}
+
+\subsection{Ideal Blocks and Topologies}
+\begin{frame}{BGT \& REG}
+\begin{block}{Basic Performance}
+\begin{itemize}
+\item IS ALIVE WITH 1.2135-ISH VOLTS FOR BG/REGS, 1 VOLT FOR VREF
 \end{itemize}
 \end{block}
 %
-\begin{block}{Topology}
+\begin{block}{Notable Design Decisions}
 \begin{itemize}
-\item Razavi band gap reference with extra branch for PTAT voltage generation
-\item NMOS input op-amp
+\item Used PSR band gap reference - Li, Yao, Guo 2009
+\item V$_{ref}$ LDO replaced with unity gain buffer
 \end{itemize}
 \end{block}
 \end{frame}
 %
-\begin{frame}{Digital Regulator}
-\begin{block}{Basic Specs}
+\begin{frame}{MUX \& PGA}
+\begin{block}{Basic Performance}
 \begin{itemize}
-\item 1.2 V $\pm$ 120 mV across 0-70 $^\circ$C at 5 mA
-\item Less than 400 mV dropout
+\item MUX settles within 100 ns
+\item PGA has $<$ 0.4\% error for all gains, and settles within 100ns
 \end{itemize}
 \end{block}
 %
-\begin{block}{Topology}
+\begin{block}{Notable Design Decisions}
 \begin{itemize}
-\item NMOS input componensated two-stage
-\end{itemize}
-\end{block}
-\end{frame}
-%
-\begin{frame}{Analog Regulator}
-\begin{block}{Basic Specs}
-\begin{itemize}
-\item 1.2 V $\pm$ 0.1 mV across 0-70 $^\circ$C at 5 mA
-\item Less than 400 mV dropout
-\end{itemize}
-\end{block}
-%
-\begin{block}{Topology}
-\begin{itemize}
-\item NMOS input componensated two-stage
+\item Mostly minimum size transistors for switching
+\item Used hvt devices for less leakage in transmission gates
+\item Used nmos2v in parallel with $C_f$ across the op-amp
+\item Used fairly large capacitors to prevent voltage drooping and charge injection
 \end{itemize}
 \end{block}
 \end{frame}
 %
 \begin{frame}{ADC}
-\begin{block}{Basic Specs}
+\begin{block}{Basic Performance}
 \begin{itemize}
-\item 8-bit SAR
-\item 100k samples/s $\implies 10\mu s$/sample 
-\item Input range 0-1 V
+\item Accurate with an ideal supply
+\item Uses a 10MHz digital clock
 \end{itemize}
 \end{block}
 %
-\begin{block}{Topology}
+\begin{block}{Notable Design Decisions}
 \begin{itemize}
-\item Strongarm latch comparing at $\text{V}_\text{REF}$
+\item Charge pump - Scott, Boser, Pister 2003
 \end{itemize}
 \end{block}
 \end{frame}
 %
-\begin{frame}{Multiplexer}
-\begin{block}{Basic Specs}
-\begin{itemize}
-\item 0-1 V analog input voltage range
-\item 4 to 1 MUX.
-\item 10 $\tau$ RC delay less than 1$\mu$s. 
-\end{itemize}
-\end{block}
+
+\subsection{Clock Diagram}
+\begin{frame}{Clock Diagram for PGA and ADC}
+\end{frame}
 %
-\begin{block}{Topology}
+\subsection{Real Op-amps (In Progress)}
+\begin{frame}{BGT \& REG}
 \begin{itemize}
-\item Built out of two 2 to 1 MUXs.
-\item Transmission Gate topology. 
+\item Voltage Reference (finished):
+\begin{itemize}
+\item In unity gain configuration
+\item Can handle anywhere from 8fF to $>$ 2pF loads
 \end{itemize}
-\end{block}
+\item Digital Regulator ("finished"):
+\begin{itemize}
+\item Current version either oscillates very frequently or has a large variation from the intended band gap voltage
+\item Planning to make a "slow" amplifier to avoid pulse-y behavior
+\end{itemize}
+\item Analog Regulator:
+\begin{itemize}
+\item "Slow"
+\item Still need to think about a way to provide as little variation as possible
+\end{itemize}
+\item Band Gap Reference
+\end{itemize}
 \end{frame}
 %
 \begin{frame}{PGA}
-\begin{block}{Basic Specs}
 \begin{itemize}
-\item Programmable gain between 1-8
-\item Less than 0.4\% gain error 
-\item Drives 1024 fF ADC
-\item Common mode input range 0-1 V
+\item Two Stage PMOS Input Cascode:
+\begin{itemize}
+\item Having problems with leakage while holding across a clock cycle
+\item Can drive to within 3mV of ground using second stage NMOS input
 \end{itemize}
-\end{block}
-%
-\begin{block}{Topology}
+\item Topology:
 \begin{itemize}
-\item PMOS input folded cascode 2 stage
-\begin{itemize}
-\item Input with 0 V CM
-\item Output with 0 V - 1 V swing
-\item Settles to 0.4\% in 4 $\mu$s
-\item Unity gain stable with load capacitance from 4fF to 1024fF
+\item Extra switch added to discharge caps when V- cannot be driven to 0V fast enough
 \end{itemize}
 \end{itemize}
-\end{block}
 \end{frame}
-%
 
-
-\subsection{Preliminary Results}
-\begin{frame}{Band Gap}
+\begin{frame}{ADC}
 \begin{itemize}
-\item We had zero temperature coefficient at 25 $^\circ$C
-\item Less than 20 mV variation across -40 $^\circ$C to 85 $^\circ$C
-\end{itemize}
-\includegraphics[scale=0.3]{band_gap_circuit.png}
-\end{frame}
-%
-\begin{frame}{Folded Cascode w/PMOS input}
+\item Strong Arm Latch - Scott, Boser, Pister 2003:
 \begin{itemize}
-\item 0-0.9 V common-mode input range
-\item Better than 2250x gain from -40 $^\circ$C to 85 $^\circ$C
-\item Less than 0.4\% gain error
-\item Some bias issues
+\item Used \textasciitilde RST = CLK
 \end{itemize}
-\input{folded_cascode_circuit}
+\end{itemize}
 \end{frame}
 
 \subsection{Responsibilities}
