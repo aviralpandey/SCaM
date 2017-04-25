@@ -1,0 +1,36 @@
+\begin{circuitikz} [scale=0.5, transform shape]
+    \draw
+    (0,0)
+    node[op amp](opamp1){}
+    (opamp1.out) -| (1.5,2)
+    to [C] ++(-3,0)
+    (-1.5,2) |- (opamp1.-)
+    (-1.5,2) to[short] ++(0,2)
+    to [spst] ++(3,0)
+    to [short] ++(0,-2)
+    
+    (opamp1.-) -- (-3,0.5)
+    (-3,0.5) to[C] ++(-2,0)
+    to[short] ++(-2,0)
+    (-3,0.5) to[short] ++(0,2)
+    to[C] ++(-2,0)
+    to[spst] ++(-2,0)
+    (-3,0.5) to[short] ++(0,4)
+    to[C] ++(-2,0)
+    to[spst] ++(-2,0)
+    (-3,0.5) to[short] ++(0,6)
+    to[C] ++(-2,0)
+    to[spst] ++(-2,0)
+    to[short] ++(0,-6)
+    to[spst] ++(0,-2)
+    node[ground]{}
+
+    (-7,0.5) to[spst, -o] ++(-2,0)
+    node[anchor=east]{$V_{in}$}
+    
+    (-3,0.5) to[spst] ++(0,-2)
+    node[ground]{}
+    
+    (opamp1.+) -| (-1.5,-1.5) node[ground]{}
+    ;
+\end{circuitikz}

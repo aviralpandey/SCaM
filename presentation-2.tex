@@ -69,10 +69,8 @@
 \subsection{Integration}
 \begin{frame}{Semi-Ideal SCaM Overview}
 \begin{itemize}
-\item Made individual blocks with real components, but ideal op-amps
-\item Tested each block separately, and met specs
-\item Connected blocks together and dealt with loading issues
 \item SCaM is alive!
+\item Atleast with ideal op-amps
 \item Slowly adding completed and real op-amp blocks into the integration one by one in order to isolate problems caused by individual blocks \begin{itemize}
 \item Strong Arm Latch
 \item V$_{ref}$ regulator
@@ -195,14 +193,32 @@ With the PGA, all other gain settings were within 1 LSB of error, and only unity
 \item Uses a 10MHz digital clock
 \end{itemize}
 \end{block}
-%
-\begin{block}{Notable Design Decisions}
-\begin{itemize}
-\item Charge pump - Scott, Boser, Pister 2003
-\end{itemize}
-\end{block}
+\include{circuits/adc_schematic}
 \end{frame}
 %
+\begin{frame}{ADC - Leakage}
+\begin{block}{Charge Leakage}
+\begin{itemize}
+\item d7 and d6 overlap (thanks Brad), causes unexpectadly high voltages
+\item High leakage current causes more than an LSB of loss.
+\end{itemize}
+INCLUDE GRAPHIC HERE
+\end{block}
+\end{frame}
+
+\begin{frame}{ADC- Charge Pump}
+\begin{block}{Charge Pump Topolgy}
+\begin{itemize}
+\item Using a charge pump to reduce the $V_{GS}$ of the Load PMOS
+\item Restricts leakage to less than an LSB
+\end{itemize}
+\end{block}
+\include{circuits/charge_pump}
+\end{frame}
+
+\begin{frame}{ADC - Charge Pump cont.}
+Insert diagrams here
+\end{frame}
 
 \subsection{Clocking Details}
 \begin{frame}{Clocking with the PGA and ADC}
