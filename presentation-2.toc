@@ -7,6 +7,6 @@
 \beamer@subsectionintoc {2}{1}{Ideal Blocks and Topologies}{9}{0}{2}
 \beamer@subsectionintoc {2}{2}{Clocking Details}{16}{0}{2}
 \beamer@subsectionintoc {2}{3}{Real Op-amps (In Progress)}{18}{0}{2}
-\beamer@sectionintoc {3}{Moving forward}{22}{0}{3}
-\beamer@subsectionintoc {3}{1}{Priorities}{22}{0}{3}
-\beamer@subsectionintoc {3}{2}{Responsibilities}{24}{0}{3}
+\beamer@sectionintoc {3}{Moving forward}{24}{0}{3}
+\beamer@subsectionintoc {3}{1}{Priorities}{24}{0}{3}
+\beamer@subsectionintoc {3}{2}{Responsibilities}{26}{0}{3}

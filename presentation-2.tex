@@ -270,17 +270,31 @@ With the PGA, all other gain settings were within 1 LSB of error, and only unity
 \end{frame}
 %
 \begin{frame}{PGA}
-\begin{itemize}
-\item Two Stage PMOS Input Cascode:
-\begin{itemize}
-\item Having problems with leakage while holding across a clock cycle
-\item Can drive to within 3mV of ground using second stage NMOS input
-\end{itemize}
-\item Topology:
-\begin{itemize}
-\item Extra grounding switch added to $\phi_1$ discharge caps when V- cannot be driven to 0V fast enough
-\end{itemize}
-\end{itemize}
+\begin{block}{Topology Changes}
+Added another switch in phase 1 to fix convergence issues
+\end{block}
+\input{circuits/PGA_circuit.tex}
+\end{frame}
+%
+\begin{frame}{PGA - cont}
+\begin{block}{OP-Amp Topology}
+Using a folded cascode PMOS input two stage opamp, with a PMOS second stage
+\end{block}
+\input{circuits/folded_cascode_circuit.tex}
+\end{frame}
+%
+\begin{frame}{PGA - cont}
+\begin{block}{PGA issues}
+When configured in unity gain, the PGA does not perform as expected.
+\end{block}
+\begin{figure}
+\begin{minipage}{.5\textwidth}
+    \includegraphics[scale=0.29]{PGA_v2_data/figure_1.png} 
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+    \includegraphics[scale=0.29]{PGA_v2_data/figure_2.png}
+\end{minipage}
+\end{figure}
 \end{frame}
 
 \begin{frame}{ADC}
