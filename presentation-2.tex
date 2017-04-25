@@ -44,7 +44,7 @@
 
 \institute{University of California, Berkeley}
 
-\date{Presentation 1}
+\date{Presentation 2}
 
 \makebeamertitle
 
@@ -73,7 +73,7 @@
 \item Tested each block separately, and met specs
 \item Connected blocks together and dealt with loading issues
 \item SCaM is alive!
-\item Slowly adding completed, real op-amp blocks into the integration one by one to isolate problems caused by individual blocks \begin{itemize}
+\item Slowly adding completed and real op-amp blocks into the integration one by one in order to isolate problems caused by individual blocks \begin{itemize}
 \item Strong Arm Latch
 \item V$_{ref}$ regulator
 \item PGA*
@@ -91,7 +91,7 @@
 \item Tabulated worst case error in number of LSB
 \end{itemize}
 \begin{center}
-Battery Voltage \\
+Temperature ($^\circ$C) \& Battery Voltage (V) \\
 \begin{tabular}{|c|c|c|c|}
 \hline
 & 1.6 V & 2.4 V & 3.2 V \tabularnewline \hline
@@ -110,10 +110,10 @@ Battery Voltage \\
 \begin{itemize}
 \item Selected temperature sensor input
 \item PGA set to gain of 1
-\item Tabulated worst case error in number of LSB
+\item Tabulated worst case error in number of LSB, below
 \end{itemize}
 \begin{center}
-Battery Voltage \\
+Temperature ($^\circ$C) \& Battery Voltage (V) \\
 \begin{tabular}{|c|c|c|c|}
 \hline
 & 1.6 V & 2.4 V & 3.2 V \tabularnewline \hline
@@ -132,13 +132,13 @@ Battery Voltage \\
 \begin{itemize}
 \item Input of 200 mV
 \item PGA set to gain of 4
-\item Tabulated worst case error in number of LSB
+\item Tabulated worst case error in number of LSB, below
 \end{itemize}
 \begin{center}
-Battery Voltage \\
+Temperature ($^\circ$C) \& Battery Voltage (V) \\
 \begin{tabular}{|c|c|c|c|}
 \hline
-& 1.6 V & 2.4 V & 3.2 V \tabularnewline \hline
+ & 1.6 V & 2.4 V & 3.2 V \tabularnewline \hline
 70 $^\circ$C & & & \tabularnewline 
 \hline
 25 $^\circ$C & & & \tabularnewline
@@ -172,7 +172,7 @@ Battery Voltage \\
 \begin{block}{Basic Performance}
 \begin{itemize}
 \item MUX settles within 100 ns
-\item PGA has $<$ 0.4\% error for all gains, and settles within 100ns
+\item PGA's amplified results stay within 0.4\% error for the 5 $\mu$s window of the "amplify" phase
 \end{itemize}
 \end{block}
 %
@@ -202,8 +202,13 @@ Battery Voltage \\
 \end{frame}
 %
 
-\subsection{Clock Diagram}
-\begin{frame}{Clock Diagram for PGA and ADC}
+\subsection{Clocking Details}
+\begin{frame}{Clocking with the PGA and ADC}
+\begin{itemize}
+\item Synchronized PGA "$\phi_1$", the "sample" phase, with the ADC's "compare" phase, and the PGA's "$\phi_2$, or "amplify", with the ADC's "load" phase
+\item $\phi_1$ and $\phi_2$ are 5 $\mu$s each, with rise and fall times of 10 ns, and thus the clock period of 10 $\mu$s satisfies the 100ksamples/s required by spec
+\item ADC clock (10MHz) is equal to digital clock
+\end{itemize}
 \end{frame}
 %
 \subsection{Real Op-amps (In Progress)}
@@ -212,7 +217,7 @@ Battery Voltage \\
 \item Voltage Reference (finished):
 \begin{itemize}
 \item In unity gain configuration
-\item Can handle anywhere from 8fF to $>$ 2pF loads
+\item Can handle anywhere from 8fF to 2pF+ loads
 \end{itemize}
 \item Digital Regulator ("finished"):
 \begin{itemize}
@@ -221,7 +226,7 @@ Battery Voltage \\
 \end{itemize}
 \item Analog Regulator:
 \begin{itemize}
-\item "Slow"
+\item Make "slow" to complement digital regulator
 \item Still need to think about a way to provide as little variation as possible
 \end{itemize}
 \item Band Gap Reference
@@ -237,7 +242,7 @@ Battery Voltage \\
 \end{itemize}
 \item Topology:
 \begin{itemize}
-\item Extra switch added to discharge caps when V- cannot be driven to 0V fast enough
+\item Extra grounding switch added to $\phi_1$ discharge caps when V- cannot be driven to 0V fast enough
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -246,29 +251,26 @@ Battery Voltage \\
 \begin{itemize}
 \item Strong Arm Latch - Scott, Boser, Pister 2003:
 \begin{itemize}
-\item Used \textasciitilde RST = CLK
+\item Used $\overline{RST}$ = CLK
 \end{itemize}
+\end{itemize}
+\end{frame}
+%
+\section{Moving forward}
+\subsection{Priorities}
+\begin{frame} {Remarks on Potential Problems}
+\begin{itemize}
+\item Ensure band gap reference and voltage regulators work!
+\begin{itemize}
+\item Buggy band gap and unstable regulated voltages caused LOTS of trouble even during ideal integration
+\end{itemize}
+\item PGA needs to be able to hold its amplified voltage for as long as possible, without drooping too far away from its initial position
+\item Temperature actually hasn't seemed to be too big of a problem so far, though they gave the biggest problems during labs 4 and 5
 \end{itemize}
 \end{frame}
 
 \subsection{Responsibilities}
-\begin{frame}{Responsibilities}
-
-\begin{tabular}{|c|c|c|c|}
-\hline 
- & ADC & PGA/MUX & BG/REG\tabularnewline
-\hline 
-\hline 
-Topology & Pandey & Chen & Zheng\tabularnewline
-\hline 
-Amplifier & Zheng & Pandey & Chen\tabularnewline
-\hline 
-Verification & Chen & Zheng & Pandey\tabularnewline
-\hline 
-\end{tabular}
-\end{frame}
-%
-\begin{frame}{Milestones}
+\begin{frame}{Recap of Milestones}
 \begin{itemize}
 \item Blocks complete and implemented with ideal amplifiers (4/20)
 \item System-level testbenches complete; first integration (4/21)
@@ -278,12 +280,6 @@ Verification & Chen & Zheng & Pandey\tabularnewline
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{Scoring}
-\begin{itemize}
-\item 5\%: Meeting internal milestone dates
-\item 55\%: Functional SCaM units meeting specs
-\item 40\%: Functional SCaM system. 
-\end{itemize}
-\end{frame}
+
 
 \end{document}
