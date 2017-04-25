@@ -154,10 +154,14 @@ With the PGA, all other gain settings were within 1 LSB of error, and only unity
 \section{Progress and Design Decisions}
 
 \subsection{Ideal Blocks and Topologies}
-\begin{frame}{BGT \& REG}
+\begin{frame}{Band Gap \& Regulators}
 \begin{block}{Basic Performance}
 \begin{itemize}
-\item IS ALIVE WITH 1.2135-ISH VOLTS FOR BG/REGS, 1 VOLT FOR VREF
+\item Alive and kicking
+\item 1.000 $V_{ref} \pm$ 0.2 mV across supply and temperature range \emph{when unloaded} at bandgap output
+\item Buffered $V_{ref}$ doesn't perform as well
+\item Temperature sensor borked at low supply
+\item Temperature output linear but doesn't cross origin...
 \end{itemize}
 \end{block}
 %
@@ -168,6 +172,12 @@ With the PGA, all other gain settings were within 1 LSB of error, and only unity
 \end{itemize}
 \end{block}
 \end{frame}
+\begin{frame}{Bandgap - VT Variation}
+\begin{figure}
+    \includegraphics[scale=0.7]{bg_data/vt-variation.png}
+\end{figure}
+\end{frame}
+
 %
 \begin{frame}{MUX \& PGA}
 \begin{block}{Basic Performance}
