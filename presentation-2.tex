@@ -260,6 +260,14 @@ With the PGA, all other gain settings were within 1 LSB of error, and only unity
 \item Current version either oscillates very frequently or has a large variation from the intended band gap voltage
 \item Planning to make a "slow" amplifier to avoid pulse-y behavior
 \end{itemize}
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.25]{ADC_data/Version4/figure_1.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{BGT \& REG (cont.)}
+\begin{itemize}
 \item Analog Regulator:
 \begin{itemize}
 \item Make "slow" to complement digital regulator
@@ -277,7 +285,7 @@ Added another switch in phase 1 to fix convergence issues
 \end{frame}
 %
 \begin{frame}{PGA - cont}
-\begin{block}{OP-Amp Topology}
+\begin{block}{Op-Amp Topology}
 Using a folded cascode PMOS input two stage opamp, with a PMOS second stage
 \end{block}
 \input{circuits/folded_cascode_circuit.tex}
