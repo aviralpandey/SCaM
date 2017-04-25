@@ -6,7 +6,7 @@
     to [C] ++(-3,0)
     (-1.5,2) |- (opamp1.-)
     (-1.5,2) to[short] ++(0,2)
-    to [spst] ++(3,0)
+    to [spst, l_=$\phi_1$] ++(3,0)
     to [short] ++(0,-2)
     
     (opamp1.-) -- (-3,0.5)
@@ -14,21 +14,21 @@
     to[short] ++(-2,0)
     (-3,0.5) to[short] ++(0,2)
     to[C] ++(-2,0)
-    to[spst] ++(-2,0)
+    to[spst, l_=$\phi_1 B_0$] ++(-2,0)
     (-3,0.5) to[short] ++(0,4)
     to[C] ++(-2,0)
-    to[spst] ++(-2,0)
+    to[spst, l_=$\phi_1 B_1$] ++(-2,0)
     (-3,0.5) to[short] ++(0,6)
     to[C] ++(-2,0)
-    to[spst] ++(-2,0)
+    to[spst, l_=$\phi_1 B_2$] ++(-2,0)
     to[short] ++(0,-6)
-    to[spst] ++(0,-2)
+    to[spst, l_=$\phi_2$] ++(0,-2)
     node[ground]{}
 
-    (-7,0.5) to[spst, -o] ++(-2,0)
+    (-7,0.5) to[spst, -o, l_=$\phi_1$] ++(-2,0)
     node[anchor=east]{$V_{in}$}
     
-    (-3,0.5) to[spst] ++(0,-2)
+    (-3,0.5) to[spst, l_=$\phi_1$] ++(0,-2)
     node[ground]{}
     
     (opamp1.+) -| (-1.5,-1.5) node[ground]{}
