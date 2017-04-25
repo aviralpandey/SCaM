@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage[european]{circuitikz}
+\usepackage{subcaption}
 \ctikzset{tripoles/mos style/arrows}
 
 \makeatletter
@@ -202,8 +203,15 @@ With the PGA, all other gain settings were within 1 LSB of error, and only unity
 \item d7 and d6 overlap (thanks Brad), causes unexpectadly high voltages
 \item High leakage current causes more than an LSB of loss.
 \end{itemize}
-INCLUDE GRAPHIC HERE
 \end{block}
+\begin{figure}
+\begin{minipage}{.5\textwidth}
+    \includegraphics[scale=0.29]{ADC_data/Version2/figure_1.png} 
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+    \includegraphics[scale=0.29]{ADC_data/Version2/figure_2.png}
+\end{minipage}
+\end{figure}
 \end{frame}
 
 \begin{frame}{ADC- Charge Pump}
@@ -213,11 +221,20 @@ INCLUDE GRAPHIC HERE
 \item Restricts leakage to less than an LSB
 \end{itemize}
 \end{block}
+\begin{center}
 \include{circuits/charge_pump}
+\end{center}
 \end{frame}
 
 \begin{frame}{ADC - Charge Pump cont.}
-Insert diagrams here
+\begin{figure}
+\begin{minipage}{.5\textwidth}
+    \includegraphics[scale=0.29]{ADC_data/Version3/figure_1.png} 
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+    \includegraphics[scale=0.29]{ADC_data/Version3/figure_2.png}
+\end{minipage}
+\end{figure}
 \end{frame}
 
 \subsection{Clocking Details}
