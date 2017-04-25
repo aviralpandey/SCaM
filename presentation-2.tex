@@ -95,14 +95,15 @@ Temperature ($^\circ$C) \& Battery Voltage (V) \\
 \begin{tabular}{|c|c|c|c|}
 \hline
 & 1.6 V & 2.4 V & 3.2 V \tabularnewline \hline
-70 $^\circ$C & & & \tabularnewline 
+70 $^\circ$C & 0 & 0 & 0\tabularnewline 
 \hline
-25 $^\circ$C & & & \tabularnewline
+25 $^\circ$C & $V_{ref}$ broken & 0 & 0\tabularnewline
 \hline
-0 $^\circ$C & & & \tabularnewline 
+0 $^\circ$C & 0 & $V_{ref}$ broken & 0 \tabularnewline 
 \hline 
 \end{tabular}
 \end{center}
+($V_{ref}$ is completely not working in some scenarios, and yielding an ADC output of all zeroes) \\
 \end{frame}
 %
 
@@ -117,11 +118,11 @@ Temperature ($^\circ$C) \& Battery Voltage (V) \\
 \begin{tabular}{|c|c|c|c|}
 \hline
 & 1.6 V & 2.4 V & 3.2 V \tabularnewline \hline
-70 $^\circ$C & & & \tabularnewline 
+70 $^\circ$C & 996mV & 843.8mV & 843.8mV\tabularnewline 
 \hline
-25 $^\circ$C & & & \tabularnewline
+25 $^\circ$C & $V_{ref}$ broken & 820.3mV & 820.3mV\tabularnewline
 \hline
-0 $^\circ$C & & & \tabularnewline 
+0 $^\circ$C & 976.53mV & $V_{ref}$ broken & 804.6mV \tabularnewline 
 \hline 
 \end{tabular}
 \end{center}
@@ -131,22 +132,23 @@ Temperature ($^\circ$C) \& Battery Voltage (V) \\
 \begin{frame}{PGA LSB Error}
 \begin{itemize}
 \item Input of 200 mV
-\item PGA set to gain of 4
+\item PGA set to gain of 1
+\item Ideal supply voltage of 1.2V
 \item Tabulated worst case error in number of LSB, below
 \end{itemize}
 \begin{center}
-Temperature ($^\circ$C) \& Battery Voltage (V) \\
-\begin{tabular}{|c|c|c|c|}
+Temperature ($^\circ$C) \\
+\begin{tabular}{|c|c|}
 \hline
- & 1.6 V & 2.4 V & 3.2 V \tabularnewline \hline
-70 $^\circ$C & & & \tabularnewline 
+70 $^\circ$C & 0 \tabularnewline 
 \hline
-25 $^\circ$C & & & \tabularnewline
+25 $^\circ$C & 21 \tabularnewline
 \hline
-0 $^\circ$C & & & \tabularnewline 
+0 $^\circ$C & 15 \tabularnewline 
 \hline 
 \end{tabular}
 \end{center}
+With the PGA, all other gain settings were within 1 LSB of error, and only unity gain was giving problems
 \end{frame}
 %
 
@@ -208,6 +210,7 @@ Temperature ($^\circ$C) \& Battery Voltage (V) \\
 \item Synchronized PGA "$\phi_1$", the "sample" phase, with the ADC's "compare" phase, and the PGA's "$\phi_2$, or "amplify", with the ADC's "load" phase
 \item $\phi_1$ and $\phi_2$ are 5 $\mu$s each, with rise and fall times of 10 ns, and thus the clock period of 10 $\mu$s satisfies the 100ksamples/s required by spec
 \item ADC clock (10MHz) is equal to digital clock
+\item We deliberately delayed the digital clock by 10ns so that it would not interfere with rise/fall times of $\phi_1$ and $\phi_2$, as it was previously causing the ADC to raise the MSB 100\% of the time
 \end{itemize}
 \end{frame}
 %
