@@ -1,0 +1,58 @@
+\begin{tikzpicture}[scale = 0.5, transform shape]
+    \draw
+    (0,4) 
+    to[spst, l_=$load$] ++(2,0)
+    to[short] ++(12,0)
+    
+    (2,4)
+    to[C, l_=$128*C$] ++(0,-2)
+    to[spst, l_=$load$] ++(0,-2)
+    to[short, -o] ++(-2,0)
+    node[anchor=north]{$V_{in}$}
+    
+    (2,2)
+    to[short] ++(1.5,0)
+    to[spst, l_=$cmp$] ++(0,-2)
+    
+    (3.5,-1)
+    node[american not port, rotate = 90] (inv1) {}
+    (inv1.out) -- (3.5,0)
+    (inv1.in) to[short, -o] ++(0,-0.5)
+    node[anchor=north]{d7}
+    
+    (8,4)
+    to[C, l_=$C$] ++(0,-2)
+    to[spst, l_=$load$] ++(0,-2)
+    to[short] (0,0)
+    
+    (8,2)
+    to[short] ++(1.5,0)
+    to[spst, l_=$cmp$] ++(0,-2)
+    
+    (9.5,-1)
+    node[american not port, rotate = 90] (inv1) {}
+    (inv1.out) -- (9.5,0)
+    (inv1.in) to[short, -o] ++(0,-0.5)
+    node[anchor=north]{d0}
+
+    
+    (12,4)
+    to[C, l_=$C$] ++(0,-2)
+    to[spst, l_=$load$] ++(0,-2)
+    to[short] (0,0)
+    
+    (12,2)
+    to[short] ++(1.5,0)
+    to[spst, l_=$cmp$] ++(0,-2)
+    node[ground]{}
+
+    (15,4.5) node[op amp, yscale=-1](comp){} 
+    (comp.+) to[short, -o] ++(-1,0)
+    node[anchor=east]{$V_{ref}$}
+    
+    (comp.out) to[short,-o] ++(0.5,0)
+    node[anchor=west]{$V_o$}
+
+    node[draw] at (5,3) {. . .}
+    ;
+\end{tikzpicture}

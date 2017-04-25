@@ -1,0 +1,65 @@
+\begin{circuitikz}[scale=0.5, transform shape, american resistors]
+    \draw
+    (0,5) node[pmos, xscale=-1](pmos1){}
+    (pmos1.S) -- (0,6)
+    (3,5) node[pmos](pmos2){}
+    (pmos2.S) -- (3,6)
+    (pmos1.G) -- (pmos2.G)
+    (pmos1.D) -- (0,4)
+    (pmos2.D) -- (3,4)
+   
+    (0,4) to [R] ++(0,-2)
+    to [R] ++(0,-2)
+    to [Do] ++(0,-2)
+
+    (3,4) to [R] ++(0,-2)
+    to [short] ++(0,-2)
+    to [Do] ++(0,-2)
+    to[short] ++(-5,0)
+    
+    (-2,-2) to[R] ++(0,3)
+    to[R] ++(0,3)
+    -| (pmos1.D)
+
+    (6,-2) to[R] ++(0,3)
+    to[R] ++(0,3)
+    -| (pmos2.D)
+
+    (6,4) to[short,-o] ++(0.5, 0)
+    node[anchor=west]{$V_{bg}$}
+    (4,4) to[C] ++(0,-6)
+    
+    (6,1) to[short,-o] ++(0.5, 0)
+    node[anchor=west]{$V_{ref}$}
+    
+    (0,2) to[short,-o] ++(0.3,0)
+    node[anchor=west]{-}
+    (3,2) to[short,-o] ++(-0.3,0)
+    node[anchor=east]{+}
+
+    (0,-2) to[short] ++(6,0)   
+    (0,6) to[short] ++(3,0)
+
+    (10,0) node[op amp](opamp1){}
+    (12,0) node[nmos](nmos1){}
+    (opamp1.out) |- (nmos1.G)
+    (nmos1.S)  |- (0,-2)
+    (12,5) node[pmos](pmos3){}
+    (pmos3.D) -- (nmos1.D)
+    (pmos3.D) -| (pmos3.G)
+    (pmos3.S) |- (0,6)
+    
+    (pmos3.G) node[anchor=east] {$V_b$}
+    (pmos1.G) to[short] ++(0.5,0)
+    node[anchor=north]{$V_b$}
+
+    (14,5) node[pmos](pmos4){}
+    (pmos4.G) node[anchor=east] {$V_b$}
+    (pmos4.D) to[R] (14,-2)
+    (pmos4.S) |- (0,6)
+    (0,-2) to[short] (14,-2)
+    (14,2) to[short, -o] ++(0.5,0)
+    node[anchor=west] {$V_{temp}$}
+    ;
+\end{circuitikz}
+    
