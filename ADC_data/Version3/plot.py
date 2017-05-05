@@ -2,6 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FormatStrFormatter
 
+import matplotlib
+matplotlib.rcParams.update({'font.size': 18})
+
 t, vip, _, _, t1, il, _, vbody  = np.loadtxt("leakage_current.csv", delimiter=',', skiprows=1,unpack=True)
 
 print(len(t))
