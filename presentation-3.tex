@@ -176,12 +176,31 @@
 \subsection{Regulators}
 
 \begin{frame}{Voltage Regulator Topology}
+\begin{itemize}
+\item Used general LDO topology, with a large pass transistor
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Digital Regulator Design}
+\begin{block}{Op-amp Considerations}
+\begin{itemize}
+\item{NMOS one stage op amp}
+\begin{itemize}
+\item{No substantial compensation required}
+\end{itemize}
+\item{Used smaller L values, specifically 600nm, to speed up amplifier response}
+\
+\end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}{Analog Regulator Design}
+\begin{block}{Op-amp Considerations}
+\begin{itemize}
+\item Used exact same op-amp as DREG, as it happened to be fast enough to satisfy the AREG load
+\item Changed the pass transistor to be smaller
+\end{itemize}
+\end{block}
 \end{frame}
 %
 
