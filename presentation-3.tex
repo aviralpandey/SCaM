@@ -249,20 +249,25 @@ During our final stages of design, we ran into some major issues that either aro
 \begin{frame}{PGA Topology}
 \begin{block}{Switched Cap Array Topology}
 \begin{itemize}
-\item Base cap size of 8pF, to prevent output voltage drooping
-\item nmos2v's used in certain spots to prevent leakage
-\item Charge pump implemented to further stop leakage across op-amp during amplify phase
+\item Base cap size of 8pF, prevents leakage from affecting voltage
+\item Extra switch required for convergence (more on this later)  
 \end{itemize}
 \end{block}
+\begin{center}
+    \input{circuits/PGA_circuit}
+\end{center}
 \end{frame}
-
+%
 \begin{frame}{PGA Design}
 \begin{block}{Op-amp topology}
 \begin{itemize}
 \item Used a PMOS input folded cascode with PMOS second stage
+\item Large capacitors in PGA require large output stage
 \end{itemize}
 \end{block}
-\input{circuits/folded_cascode_circuit.tex}
+\begin{center}
+    \input{circuits/folded_cascode_circuit.tex}
+\end{center}
 \end{frame}
 
 %
