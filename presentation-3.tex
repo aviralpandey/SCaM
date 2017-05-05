@@ -138,12 +138,42 @@
 
 \subsection{Band Gap}
 
-\begin{frame}{Band Gap Topology}
-\end{frame}
-
-\begin{frame}{Band Gap Design}
+\begin{frame}{Band Gap}
+\begin{block}{Constraints and Target Specs}
+\begin{itemize}
+    \item Temperature/supply-independent ~1.2 V output
+    \item Accurate 1.000 V reference voltage output
+    \item Supports PTAT current generation
+    \item High supply noise rejection
+\end{itemize}
+\end{block}
+\begin{block}{Design Choices}
+\begin{itemize}
+    \item Modified enhanced power supply rejection bandgap reference from
+        Yao, Guo 2009
+    \item Internally-compensated two-stage PMOS-input error amplifier with
+        constant gm bias
+    \item Startup circuit in PSR reject branch to improve startup
+\end{itemize}
+\end{block}
 \end{frame}
 %
+
+\begin{frame}{Schematic}
+\end{frame}
+
+\begin{frame}{Performance}
+\begin{itemize}
+    \item Something happened between revisions 1.2.3 and 1.3.0
+    \item Nobody caught the change...
+    \item Reference voltage variation of 3.6 mV between 0-70 C
+    \item Temperature sensor is broken (always above 1 V)
+    \item We should have stuck with 1.2.3
+\end{itemize}
+\end{frame}
+%
+
+\subsection{Regulators}
 
 \begin{frame}{Voltage Regulator Topology}
 \end{frame}
@@ -154,14 +184,18 @@
 \begin{frame}{Analog Regulator Design}
 \end{frame}
 %
+
 \subsection{PGA}
+
 \begin{frame}{PGA Topology}
 \end{frame}
 \begin{frame}{PGA Design}
 \end{frame}
 
 %
+
 \subsection{ADC}
+
 \begin{frame}{ADC Topology}
 \begin{block}{Basic Performance}
 \begin{itemize}
