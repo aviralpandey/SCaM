@@ -322,11 +322,13 @@ During our final stages of design, we ran into some major issues that either aro
 \begin{block}{Constraints and Target Specs}
 \begin{itemize}
     \item Fast enough
+    \item Low input offset voltage
 \end{itemize}
 \end{block}
 \begin{block}{Design Choices}
 \begin{itemize}
     \item Clocked comparator from Scott et al. 2003
+    \item Tail biased to Vdd
 \end{itemize}
 \end{block}
 \end{frame}
@@ -335,6 +337,18 @@ During our final stages of design, we ran into some major issues that either aro
 \input{circuits/strong_arm.tex}
 \\
 Die Area: 3 um$^2$
+\end{frame}
+
+\begin{frame}{Transient Behavior}
+\begin{figure}
+    \includegraphics[width=\linewidth]{strongarm_data/strongarm-trans.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Transfer Characteristics}
+\begin{figure}
+    \includegraphics[width=\linewidth]{strongarm_data/strongarm-xfer.png}
+\end{figure}
 \end{frame}
 
 \section{Notable Integration Details}
