@@ -310,78 +310,25 @@
 \end{itemize}
 \end{frame}
 %
-\subsection{Real Op-amps (In Progress)}
-\begin{frame}{BGT \& REG}
+\subsection{Design Area}
+\begin{frame}{Areas and Costs}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Block & Size (mm$^2$) \tabularnewline \hline
+BGT & 0.0575\tabularnewline \hline
+REG/REF & 0.00044\tabularnewline \hline
+MUX & 3.6*$10^{-6}$\tabularnewline \hline
+PGA & 0.0665 \tabularnewline \hline
+ADC* & 0.0021 \tabularnewline \hline
+Total & 0.1639 \tabularnewline \hline
+\end{tabular}
 \begin{itemize}
-\item Voltage Reference (finished):
-\begin{itemize}
-\item In unity gain configuration
-\item Can handle anywhere from 8fF to 2pF+ loads
+\item ADC area does not include SAR state machine area
+\item Area is dominated by capacitive array in the PGA, and the resistors used in the band gap circuit
+\item Total cost comes out to 1.64 cents
 \end{itemize}
-\item Digital Regulator ("finished"):
-\begin{itemize}
-\item Current version either oscillates very frequently or has a large variation from the intended band gap voltage
-\item Planning to make a "slow" amplifier to avoid pulse-y behavior
-\end{itemize}
-\end{itemize}
-\begin{figure}
-\includegraphics[scale=0.25]{ADC_data/Version4/figure_1.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}{BGT \& REG (cont.)}
-\begin{itemize}
-\item Analog Regulator:
-\begin{itemize}
-\item Make "slow" to complement digital regulator
-\item Still need to think about a way to provide as little variation as possible
-\end{itemize}
-\item Band Gap Reference
-\end{itemize}
-\end{frame}
-%
-\begin{frame}{PGA}
-\begin{block}{Topology Changes}
-Added another switch in phase 1 to fix convergence issues
-\end{block}
-\input{circuits/PGA_circuit.tex}
-\end{frame}
-%
-\begin{frame}{PGA - cont}
-\begin{block}{Op-Amp Topology}
-Using a folded cascode PMOS input two stage opamp, with a PMOS second stage
-\end{block}
-\input{circuits/folded_cascode_circuit.tex}
-\end{frame}
-%
-\begin{frame}{PGA - cont}
-\begin{block}{PGA issues}
-When configured in unity gain, the PGA does not perform as expected.
-\end{block}
-\begin{figure}
-\begin{minipage}{.5\textwidth}
-    \includegraphics[scale=0.29]{PGA_v2_data/figure_1.png}
-    \caption{Unity Gain configuration} 
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-    \includegraphics[scale=0.29]{PGA_v2_data/figure_2.png}
-    \caption{Gain = 2}
-\end{minipage}
-\end{figure}
-\end{frame}
-
-\begin{frame}{PGA - cont}
-\begin{block}{PGA issues}
-However, when the PGA op-amp is configured as a unity gain buffer, there are no stability issues
-\end{block}
-\begin{figure}
-\centering
-\includegraphics[scale=0.29]{PGA_v2_data/figure_3.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}{ADC}
-\input{circuits/strong_arm.tex}
+\end{center}
 \end{frame}
 %
 \subsection{Problems}
