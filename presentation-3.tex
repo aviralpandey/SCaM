@@ -191,6 +191,16 @@ During our final stages of design, we ran into some major issues that either aro
 \end{block}
 \end{frame}
 %
+\begin{frame}{Design}
+\begin{itemize}
+    \item $V_{ref} = V_{th} \ln(n) \frac{R2}{R1} + V_{be}$
+    \item $V_{be}$ has a coefficient of -1.8 mV/K for our diodes
+    \item Sets $V_{be} = $ 662.4 mV
+    \item For $n = 8$, $\frac{R2}{R1} = 10$, actual ratio $\approx 8.5$
+    \item For max size diodes, $I = 600$ nA for our $V_{be}$
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Schematic}
 \begin{center}
     \input{circuits/bandgap_circuit}
@@ -314,6 +324,9 @@ During our final stages of design, we ran into some major issues that either aro
     \item Charge pump is same topology as in Scott et al. 
 \end{itemize}
 \end{block}
+\begin{center}
+    \input{circuits/charge_pump_pga}
+\end{center}
 \end{frame}
 %
 \subsection{ADC}
@@ -400,8 +413,6 @@ Die Area: 3 um$^2$
 \end{figure}
 \end{frame}
 
-\section{Notable Integration Details}
-\subsection{Clocking Details}
 \begin{frame}{Clocking with the PGA and ADC}
 \begin{itemize}
 \item Synchronized PGA "$\phi_1$", the "sample" phase, with the ADC's "compare" phase, and the PGA's "$\phi_2$, or "amplify", with the ADC's "load" phase
@@ -412,10 +423,12 @@ Die Area: 3 um$^2$
 \end{frame}
 %
 
-\section{Takeaways from this Project}
+\section{Conclusions}
 \subsection{Lessons Learned}
-\begin{frame} {Problems and our Solutions}
+\begin{frame}{Lessons Learned}
 \begin{itemize}
+\item Make running tests easy, test often
+\item There are no such things as 'small' changes
 \item Having a good band gap is \textbf{extremely} important for the performance of the circuit
 \begin{itemize}
 \item PSR + start-up circuit
