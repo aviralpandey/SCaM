@@ -227,13 +227,7 @@ During our final stages of design, we ran into some major issues that either aro
 
 \subsection{Regulators}
 
-\begin{frame}{Voltage Regulator Topology}
-\begin{itemize}
-\item Used general LDO topology, with a large pass transistor
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Digital Regulator Design}
+\begin{frame}{Digital Regulator Design (LDO)}
 \begin{block}{Op-amp Considerations}
 \begin{itemize}
 \item{NMOS one stage op amp}
@@ -246,7 +240,7 @@ During our final stages of design, we ran into some major issues that either aro
 \end{block}
 \end{frame}
 
-\begin{frame}{Analog Regulator Design}
+\begin{frame}{Analog Regulator Design (LDO)}
 \begin{block}{Op-amp Considerations}
 \begin{itemize}
 \item Used exact same op-amp as DREG, as it happened to be fast enough to satisfy the AREG load
@@ -295,7 +289,7 @@ During our final stages of design, we ran into some major issues that either aro
 \begin{frame}{PGA Design}
 \begin{block}{PGA Performance}
 \begin{itemize}
-    \item For low input voltages, the PGA performs as exptected
+    \item For low input voltages, the PGA performs as expected
     \item Many mV of error for high inputs in Unity Gain
 \end{itemize}
 \end{block}
