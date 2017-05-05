@@ -1,0 +1,20 @@
+vref: 1u*1u * 10 * 31, + 1 resistor (200n*32u)
+reg: 600n*600n*10*12, + 1 resistor (200n*30u)
+
+regulators have 2 pass transistors, 30u*100n*10 + 10u*100n*10 + 2 reg + 1 ref
+
+regulators, in total, have die area of 4.426*10^-10 m^2, or .00044 square millimeters
+
+mux: (200n*200n*10*2+200n*100n*10*2)*3 = 3.6e-6 sqmm
+
+strongarm - 3 sq um
+
+bandgap (v13x) - 10*1u*1u*113 + 10*200n*100n*5 + 1u*100u*5 + 200n*20u*19 + 200n*30u*69 + 200n*22u*19 + 200n*20u*100 + 200n*100u*2 + 200n*60n*24 + [(104+850*25+850)squm] + 9.9u^2*9 = 3.53*10^-9 sq m + 22204 sq um = .0353 + .0222 sqmm = .0575
+
+pga - 10*200e-9*100e-9*5 + 10*800e-9*280e-9*2*6 + 10*200e-9*100e-9*3 + (17.6+912*72)squm + 10*200e-9*280e-9 + amp = 2.9*10^-11 sq m + 65682 sq um + amp
+
+pga amp - 10*1e-6*1e-6*57 + 500e-9*84e-6*3 + 104 sq um = 6.96*10^-10 sq m + 104 sq um
+
+=> pga = 7.25e-10 sq m + 65786 sq um = .000725 sq mm + .0658 sq mm = .0665 sq mm
+
+adc - sar_fsm = 10*200n*100n*3 + 10*100n*100n*28 + 10*200n*100n*2*17 + 10*200n*200n*2*18 + 10*200n*100n*4 + (17.6+8+8+16+32+64+128+256+512+1024) sq um = 2.54*10^-11 sq m + 2065.6 sq um = .00207 sq mm + .0000254 sq mm = .00209 sq mm
