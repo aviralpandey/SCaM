@@ -77,9 +77,28 @@
 
 \subsection{Results}
 
+\begin{frame}{Summary of Results}
+\begin{block}{Scoring}
+\begin{itemize}
+    \item 5\%: Meeting internal milestone dates
+    \item 40\%: Functional SCaM system
+    \item 55\%: Functional SCaM units meeting specs
+\end{itemize}
+\end{block}
+%
+\begin{block}{Our Results}
+\begin{itemize}
+    \item All milestones met on-time
+    \item SCaM is alive
+    \item SCaM behaves moderately well under most conditions
+\end{itemize}
+\end{block}
+\end{frame}
+
 \begin{frame}{Key Performance Metrics}
 \begin{itemize}
     \item Average power consumption: 100 kW
+    \item Die size: Memorial Glade
     \item Unit cost: \$1,000,000
     \item Minimum supply for $<10$ LSB error: 9 V
 \end{itemize}
@@ -115,39 +134,17 @@
 \end{frame}
 %
 
-\begin{frame}{PGA LSB Error}
-\begin{itemize}
-\item Input of 200 mV
-\item PGA set to gain of 1
-\item Ideal supply voltage of 1.2V
-\item Tabulated worst case error in number of LSB, below
-\end{itemize}
-\begin{center}
-Temperature ($^\circ$C) \\
-\begin{tabular}{|c|c|}
-\hline
-70 $^\circ$C & 0 \tabularnewline 
-\hline
-25 $^\circ$C & 21 \tabularnewline
-\hline
-0 $^\circ$C & 15 \tabularnewline 
-\hline 
-\end{tabular}
-\end{center}
-With the PGA, all other gain settings were within 1 LSB of error, and only unity gain was giving problems
-\end{frame}
-%
+\section{Blocks}
 
-\section{Specifications and Design Decisions}
+\subsection{Band Gap}
 
-\subsection{Band Gap Reference}
 \begin{frame}{Band Gap Topology}
 \end{frame}
 
 \begin{frame}{Band Gap Design}
 \end{frame}
 %
-\subsection{Voltage Regulators}
+
 \begin{frame}{Voltage Regulator Topology}
 \end{frame}
 
@@ -157,7 +154,7 @@ With the PGA, all other gain settings were within 1 LSB of error, and only unity
 \begin{frame}{Analog Regulator Design}
 \end{frame}
 %
-\subsection{Programmable Gain Amplifier}
+\subsection{PGA}
 \begin{frame}{PGA Topology}
 \end{frame}
 \begin{frame}{PGA Design}
@@ -310,24 +307,5 @@ However, when the PGA op-amp is configured as a unity gain buffer, there are no 
 \item Temperature actually hasn't seemed to be too big of a problem so far, though they gave the biggest problems during labs 4 and 5
 \end{itemize}
 \end{frame}
-
-\subsection{Overall Sizes and Costs}
-\begin{frame}{Sizes of Blocks}
-\end{frame}
-\begin{frame}{Overall Costs}
-\end{frame}
-
-\subsection{Responsibilities}
-\begin{frame}{Recap of Milestones}
-\begin{itemize}
-\item Blocks complete and implemented with ideal amplifiers (4/20)
-\item System-level testbenches complete; first integration (4/21)
-\item Ideal amplifiers replaced with real amplifiers (4/25)
-\item Sanity check and verification (4/26)
-\item Extras, final integration and submission (4/28)
-\end{itemize}
-\end{frame}
-%
-
 
 \end{document}
