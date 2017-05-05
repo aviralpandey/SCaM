@@ -400,15 +400,22 @@ Die Area: 3 um$^2$
 \end{frame}
 %
 
-\subsection{Problems}
-\begin{frame} {Remarks on Potential Problems}
+\section{Takeaways from this Project}
+\subsection{Lessons Learned}
+\begin{frame} {Problems and our Solutions}
 \begin{itemize}
-\item Ensure band gap reference and voltage regulators work!
+\item Having a good band gap is \textbf{extremely} important for the performance of the circuit
 \begin{itemize}
-\item Buggy band gap and unstable regulated voltages caused LOTS of trouble even during ideal integration
+\item PSR + start-up circuit
 \end{itemize}
-\item PGA needs to be able to hold its amplified voltage for as long as possible, without drooping too far away from its initial position
-\item Temperature actually hasn't seemed to be too big of a problem so far, though they gave the biggest problems during labs 4 and 5
+\item Small capacitors and leaky transistors are problematic for maintaining a voltage
+\begin{itemize}
+\item Charge pump
+\end{itemize}
+\item Erratic or spiky behavior can be handled with fast amps
+\begin{itemize}
+
+\end{itemize}
 \end{itemize}
 \end{frame}
 
