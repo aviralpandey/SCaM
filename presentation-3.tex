@@ -45,7 +45,7 @@
 
 \institute{University of California, Berkeley}
 
-\date{Presentation 3}
+\date{Final Presentation}
 
 \makebeamertitle
 
@@ -65,20 +65,28 @@
 \tableofcontents{}
 \end{frame}
 
-\section{Final Results of Integration}
+\section{Overview}
 
-\subsection{Integration}
-\begin{frame}{SCaM Overview}
+\subsection{Introduction}
 
+\begin{frame}{Block Diagram}
+\begin{figure}
+\includegraphics[width=0.7\linewidth]{block-diagram}
+\end{figure}
 \end{frame}
-%
-\subsection{Error Results}
+
+\subsection{Results}
+
+\begin{frame}{Key Performance Metrics}
+\begin{itemize}
+    \item Average power consumption: 100 kW
+    \item Unit cost: \$1,000,000
+    \item Minimum supply for $<10$ LSB error: 9 V
+\end{itemize}
+\end{frame}
 
 \begin{frame}{Overall System Error (Low Inputs)}
-\begin{itemize}
-    \item 1x gain 400 mV / 4x gain 100 mV / 8x gain 50 mV
-\end{itemize}
-\begin{center}
+400 mV x1 / 100 mV x4 / 50 mV x8
 \begin{tabular}{|c|c|c|c|}
     \hline
     Temp (C) & 1.6 V    & 2.4 V         & 3.2 V      \tabularnewline \hline
@@ -89,15 +97,11 @@
     70 & 0 / -1 / 2     & 0 / -1 / 2    & 0 / -1 / 2 \tabularnewline
     \hline
 \end{tabular}
-\end{center}
 \end{frame}
 %
 
 \begin{frame}{Overall System Error (High Inputs)}
-\begin{itemize}
-    \item 1x gain 800 mV / 4x gain 200 mV / 8x gain 100 mV
-\end{itemize}
-\begin{center}
+800 mV x1 / 200 mV x4 / 100 mV x8
 \begin{tabular}{|c|c|c|c|}
     \hline
     Temp (C) & 1.6 V    & 2.4 V         & 3.2 V      \tabularnewline \hline
@@ -108,7 +112,6 @@
     70 &                &               &            \tabularnewline
     \hline
 \end{tabular}
-\end{center}
 \end{frame}
 %
 
