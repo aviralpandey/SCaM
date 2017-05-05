@@ -221,11 +221,11 @@
 \begin{frame}{PGA Topology}
 \begin{block}{Switched Cap Array Topology}
 \begin{itemize}
-\item Base cap size of 8pF, to prevent output voltage drooping
-\item nmos2v's used in certain spots to prevent leakage
-\item Charge pump implemented to further stop leakage across op-amp during amplify phase
+\item Base cap size of 8pF, to prevent output leakage
+\item Extra Switch required for convergence 
 \end{itemize}
 \end{block}
+\input{circuits/PGA_circuit}
 \end{frame}
 \begin{frame}{PGA Design}
 \begin{block}{Op-amp topology}
