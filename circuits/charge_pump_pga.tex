@@ -1,0 +1,33 @@
+\begin{circuitikz}[scale=0.4, transform shape]
+    \draw
+    (0,0) node[nmos, rotate=90, yscale=-1](pmos1){}
+    (pmos1.S) to[short] ++(-2,0)
+    
+    (-1,1.5) node[nmos, rotate=90, yscale=-1](nmos1){}
+    (nmos1.G) -| (nmos1.D)
+    (nmos1.D) to[short] ++(0.28,0)
+    to[short] ++(0,-1.9)
+    (nmos1.S) to[short] ++(-0.5,0)
+    node[ground]{}  
+    
+    (1,-1.5) node[nmos, rotate=90, yscale=-1](pmos2){}
+    (pmos2.S) -| (pmos1.G)
+    (pmos2.D) to[short] (3,-1.5)
+    |- (nmos1.S)    
+    
+    (0,-3.5) node[pmos, xscale=-1, yscale=-1](nmos2){}
+    (nmos2.D) -- (pmos1.G)
+    (nmos2.G) -| (pmos2.G)
+    
+    (1, -5) node[american not port, rotate=90](inv1) {}
+    (inv1.out) |- (nmos2.G)
+    (inv1.in) -| (nmos2.S)
+    (inv1.in) -| (3,-3.5)
+    (3,-3.5) to[C, l_=$C_{hold}$] ++(0,2)
+    
+    (inv1.in) to[short,-o] ++(0,-0.5)
+    node[anchor=west]{phi\_1}
+
+    (pmos1.D) to[short] ++(4,0)
+    ;
+\end{circuitikz}
