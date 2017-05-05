@@ -216,6 +216,16 @@
 \end{frame}
 %
 
+\begin{frame}{Voltage Reference}
+\begin{itemize}
+\item Used a unity gain buffer after a voltage divided $V_{bg}$
+\begin{itemize}
+\item Op-amp used NMOS two stage topology to satisfy minimal gain error, and had 100fF compensation to maintain stability
+\item Second stage used larger $\frac{W}{L}$ to supply more current to keep the op-amp going fast, and combat spikes in current draw during ADC loads
+\end{itemize}
+\end{itemize}
+\end{frame}
+
 \subsection{PGA}
 
 \begin{frame}{PGA Topology}
@@ -227,6 +237,7 @@
 \end{block}
 \input{circuits/PGA_circuit}
 \end{frame}
+
 \begin{frame}{PGA Design}
 \begin{block}{Op-amp topology}
 \begin{itemize}
