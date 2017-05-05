@@ -209,7 +209,7 @@
 \begin{block}{Op-amp Considerations}
 \begin{itemize}
 \item Used exact same op-amp as DREG, as it happened to be fast enough to satisfy the AREG load
-\item Changed the pass transistor to be smaller
+\item Changed the pass transistor to be slightly smaller
 \end{itemize}
 \end{block}
 \end{frame}
@@ -218,8 +218,21 @@
 \subsection{PGA}
 
 \begin{frame}{PGA Topology}
+\begin{block}{Switched Cap Array Topology}
+\begin{itemize}
+\item Base cap size of 8pF, to prevent output voltage drooping
+\item nmos2v's used in certain spots to prevent leakage
+\item Charge pump implemented to further stop leakage across op-amp during amplify phase
+\end{itemize}
+\end{block}
 \end{frame}
 \begin{frame}{PGA Design}
+\begin{block}{Op-amp topology}
+\begin{itemize}
+\item Used a PMOS input folded cascode with PMOS second stage
+\end{itemize}
+\end{block}
+\input{circuits/folded_cascode_circuit.tex}
 \end{frame}
 
 %
