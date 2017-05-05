@@ -97,10 +97,11 @@
 
 \begin{frame}{Key Performance Metrics}
 \begin{itemize}
-    \item Average power consumption: 100 kW
+    \item Worst-case error: 3 LSB
+    \item Average power consumption: 11 mW
     \item Die size: 0.1639 mm$^2$
     \item Unit cost: 1.64 cents (without packaging)
-    \item Minimum supply for $<10$ LSB error: 9 V
+    \item Minimum supply for $<3$ LSB error: 1.4 V
 \end{itemize}
 \end{frame}
 
@@ -302,8 +303,25 @@ During our final stages of design, we ran into some major issues that either aro
     \includegraphics[scale=0.29]{PGA_v2_data/PGA_trans_out/figure.png}
 \end{center}
 \end{frame}
-
-
+%
+\begin{frame}{PGA Design}
+\begin{block}{PGA Leakage}
+\begin{itemize}
+    \item Majority of Leakage occurs through switches at the $V^-$ node
+    \item $V^-$ drops to -450mV in unity gain
+\end{itemize}
+\end{block}
+\end{frame}
+%
+\begin{frame}{PGA Design}
+\begin{block}{Charge Pump}
+\begin{itemize}
+    \item Adding a charge pump to the feedback switch prevents leakage
+    \item Charge pump is same topology as in Scott et al. 
+\end{itemize}
+\end{block}
+\end{frame}
+%
 \subsection{ADC}
 
 \begin{frame}{ADC Topology}
