@@ -1,24 +1,26 @@
 \begin{circuitikz}[scale=0.5, transform shape, american resistors]
     \draw
     (0,5) node[pmos, xscale=-1](pmos1){}
+    node[anchor=east]{$\frac{1 \mu m}{5 \mu m}$}
     (pmos1.S) -- (0,6)
     (3,5) node[pmos](pmos2){}
+    node[anchor=west]{$\frac{1 \mu m}{5 \mu m}$}
     (pmos2.S) -- (3,6)
     (pmos1.G) -- (pmos2.G)
     (pmos1.D) -- (0,4)
     (pmos2.D) -- (3,4)
    
-    (0,4) to [R] ++(0,-2)
-    to [R] ++(0,-2)
+    (0,4) to [R, l_=$915K$] ++(0,-2)
+    to [R,l_=$105K$] ++(0,-2)
     to [Do] ++(0,-2)
 
-    (3,4) to [R] ++(0,-2)
+    (3,4) to [R, l_=$915K$] ++(0,-2)
     to [short] ++(0,-2)
     to [Do] ++(0,-2)
     to[short] ++(-5,0)
     
-    (-2,-2) to[R] ++(0,3)
-    to[R] ++(0,3)
+    (-2,-2) to[R, l^=$982K$] ++(0,3)
+    to[R, l^=$208K$] ++(0,3)
     -| (pmos1.D)
 
     (6,-2) to[R] ++(0,3)
@@ -55,7 +57,7 @@
 
     (14,5) node[pmos](pmos4){}
     (pmos4.G) node[anchor=east] {$V_b$}
-    (pmos4.D) to[R] (14,-2)
+    (pmos4.D) to[R,l_=$710K$] (14,-2)
     (pmos4.S) |- (0,6)
     (0,-2) to[short] (14,-2)
     (14,2) to[short, -o] ++(0.5,0)

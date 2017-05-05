@@ -63,7 +63,7 @@
     (nmos3.S) |- (12,-2)
     (nmos3.D) -- (pmos5.D)
     (nmos3.G) to[short,-o] ++(-0.2,0)
-    node[anchor=east]{$V_b$}
+    node[anchor=east]{$V_{bg}$}
     (nmos2.G) |- (nmos3.D)
     (pmos5.S) |- (0,6)
 
@@ -77,6 +77,7 @@
     (pmos7.S) |- (pmos6.G)
     (pmos7.S) -| (pmos6.D)
     (pmos7.D) -- (18,-2)
+    (19,-2) -- (0,-2)
     ;
 \end{circuitikz}
     

@@ -2,6 +2,7 @@
     \draw
     (0,0)
     node[nmos](nmos1){}
+    (nmos1.D) to[short,i=$110\mu A$] ++(0,-0.5)
     (-3,4)
     node[pmos](pmos1){}
     (3,4)
@@ -30,6 +31,6 @@
     (nmos2.G) -- (pmos5.G)
     (pmos5.S) -- (pmos3.S)
 
-    (2,1.8) -- (5.5,1.8)
+    (2,1.8) -- (5.1,1.8)
     ;
 \end{circuitikz}
