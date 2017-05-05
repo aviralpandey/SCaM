@@ -75,17 +75,6 @@
 \end{figure}
 \end{frame}
 
-\subsection{Problems from the past}
-\begin{frame}{Most troublesome issues}
-During our final stages of design, we ran into some major issues that either arose from complete integration of fully implemented components, or were recurring problems that impacted performance, including:
-\begin{itemize}
-\item Band gap reference was unreliable
-\item Temperature sensor gave outputs that were too high for PGA's CM input
-\item Too much variation on V$_{dd,a}$ and V$_{ref}$
-\item Output of PGA was drooping, due to leakage of charge
-\end{itemize}
-\end{frame}
-
 \subsection{Results}
 
 \begin{frame}{Summary of Results}
@@ -143,6 +132,38 @@ During our final stages of design, we ran into some major issues that either aro
     \hline
 \end{tabular}
 \end{frame}
+%
+
+\begin{frame}{Areas and Costs}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Block & Size (mm$^2$) \tabularnewline \hline
+BGT & 0.0575\tabularnewline \hline
+REG/REF & 0.00044\tabularnewline \hline
+MUX & 3.6*$10^{-6}$\tabularnewline \hline
+PGA & 0.0665 \tabularnewline \hline
+ADC* & 0.0021 \tabularnewline \hline
+Total & 0.1639 \tabularnewline \hline
+\end{tabular}
+\begin{itemize}
+\item ADC area does not include SAR state machine area
+\item Area is dominated by capacitive array in the PGA, and the resistors used in the band gap circuit
+\item Die cost comes out to 1.64 cents
+\end{itemize}
+\end{center}
+\end{frame}
+
+\begin{frame}{Error Summary (Excuses)}
+During our final stages of design, we ran into some major issues that either arose from complete integration of fully implemented components, or were recurring problems that impacted performance, including:
+\begin{itemize}
+\item Band gap reference was unreliable
+\item Temperature sensor gave outputs that were too high for PGA's CM input
+\item Too much variation on V$_{dd,a}$ and V$_{ref}$
+\item Output of PGA was drooping, due to leakage of charge
+\end{itemize}
+\end{frame}
+
 %
 
 \section{Blocks}
@@ -378,27 +399,7 @@ Die Area: 3 um$^2$
 \end{itemize}
 \end{frame}
 %
-\subsection{Design Area}
-\begin{frame}{Areas and Costs}
-\begin{center}
-\begin{tabular}{|c|c|}
-\hline
-Block & Size (mm$^2$) \tabularnewline \hline
-BGT & 0.0575\tabularnewline \hline
-REG/REF & 0.00044\tabularnewline \hline
-MUX & 3.6*$10^{-6}$\tabularnewline \hline
-PGA & 0.0665 \tabularnewline \hline
-ADC* & 0.0021 \tabularnewline \hline
-Total & 0.1639 \tabularnewline \hline
-\end{tabular}
-\begin{itemize}
-\item ADC area does not include SAR state machine area
-\item Area is dominated by capacitive array in the PGA, and the resistors used in the band gap circuit
-\item Total cost comes out to 1.64 cents
-\end{itemize}
-\end{center}
-\end{frame}
-%
+
 \subsection{Problems}
 \begin{frame} {Remarks on Potential Problems}
 \begin{itemize}
