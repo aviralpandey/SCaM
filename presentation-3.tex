@@ -159,7 +159,7 @@ Total & 0.1639 \tabularnewline \hline
 During our final stages of design, we ran into some major issues that either arose from complete integration of fully implemented components, or were recurring problems that impacted performance, including:
 \begin{itemize}
 \item Band gap reference was unreliable
-\item Temperature sensor gave outputs that were too high for PGA's CM input
+\item Temperature sensor gave outputs that were too high for PGA's input
 \item Too much variation on V$_{dd,a}$ and V$_{ref}$
 \item Output of PGA was drooping, due to leakage of charge
 \end{itemize}
@@ -246,26 +246,36 @@ During our final stages of design, we ran into some major issues that either aro
 \
 \end{itemize}
 \end{block}
+\begin{center}
+\includegraphics[scale=.5]{reg.png}
+\end{center}
 \end{frame}
 
 \begin{frame}{Analog Regulator Design (LDO)}
 \begin{block}{Op-amp Considerations}
 \begin{itemize}
 \item Used exact same op-amp as DREG, as it happened to be fast enough to satisfy the AREG load
-\item Changed the pass transistor to be slightly smaller
 \end{itemize}
 \end{block}
+\begin{center}
+\includegraphics[scale=.6]{reg.png}
+\end{center}
 \end{frame}
 %
 
 \begin{frame}{Voltage Reference}
+\begin{block}{Unity gain buffer using resistively divided $V_{bg}$}
 \begin{itemize}
-\item Used a unity gain buffer after a resistively divided $V_{bg}$
-\begin{itemize}
-\item Op-amp used NMOS two stage topology to satisfy minimal gain error, and had 100fF compensation to maintain stability
+\item NMOS two stage topology to satisfy minimal gain error, A$_{v0} \approx 300$
+\item Uses 100fF compensation to maintain stability
 \item Second stage used larger $\frac{W}{L}$ to supply more current to keep the op-amp going fast, and combat spikes in current draw during ADC loads
 \end{itemize}
-\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}{Voltage Reference Schematic}
+\begin{center}
+\includegraphics[scale=.75]{vref.png}
+\end{center}
 \end{frame}
 
 \subsection{PGA}
@@ -370,7 +380,7 @@ During our final stages of design, we ran into some major issues that either aro
 \end{figure}
 \end{frame}
 
-\begin{frame}{ADC- Charge Pump}
+\begin{frame}{ADC - Charge Pump}
 \begin{block}{Charge Pump Topolgy}
 \begin{itemize}
 \item Using a charge pump to reduce the $V_{GS}$ of the Load PMOS
