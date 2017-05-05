@@ -160,7 +160,6 @@
 %
 
 \begin{frame}{Schematic}
-\input{circuits/bandgap_circuit.tex}
 \end{frame}
 
 \begin{frame}{Performance}
@@ -218,7 +217,7 @@
 
 \begin{frame}{Voltage Reference}
 \begin{itemize}
-\item Used a unity gain buffer after a voltage divided $V_{bg}$
+\item Used a unity gain buffer after a resistively divided $V_{bg}$
 \begin{itemize}
 \item Op-amp used NMOS two stage topology to satisfy minimal gain error, and had 100fF compensation to maintain stability
 \item Second stage used larger $\frac{W}{L}$ to supply more current to keep the op-amp going fast, and combat spikes in current draw during ADC loads
@@ -231,11 +230,11 @@
 \begin{frame}{PGA Topology}
 \begin{block}{Switched Cap Array Topology}
 \begin{itemize}
-\item Base cap size of 8pF, to prevent leakage
-\item Extra Switch required for convergence 
+\item Base cap size of 8pF, to prevent output voltage drooping
+\item nmos2v's used in certain spots to prevent leakage
+\item Charge pump implemented to further stop leakage across op-amp during amplify phase
 \end{itemize}
 \end{block}
-\input{circuits/PGA_circuit}
 \end{frame}
 
 \begin{frame}{PGA Design}
@@ -300,25 +299,6 @@
 \end{figure}
 \end{frame}
 
-\begin{frame}{Comparator}
-\begin{block}{Constraints and Target Specs}
-\begin{itemize}
-    \item Fast enough
-\end{itemize}
-\end{block}
-\begin{block}{Design Choices}
-\begin{itemize}
-    \item Clocked comparator from Scott et al. 2003
-\end{itemize}
-\end{block}
-\end{frame}
-
-\begin{frame}{Comparator Schematics}
-\input{circuits/strong_arm.tex}
-\\
-Die Area: 3 um$^2$
-\end{frame}
-
 \section{Notable Integration Details}
 \subsection{Clocking Details}
 \begin{frame}{Clocking with the PGA and ADC}
@@ -362,14 +342,9 @@ Die Area: 3 um$^2$
 %
 \begin{frame}{PGA}
 \begin{block}{Topology Changes}
-\begin{itemize}
-\item Added another switch in phase 1 to fix convergence issues
-\item C = 8pF to prevent leakage from affecting voltage
-\end{itemize}
+Added another switch in phase 1 to fix convergence issues
 \end{block}
-\begin{center}
-    \input{circuits/PGA_circuit.tex}
-\end{center}
+\input{circuits/PGA_circuit.tex}
 \end{frame}
 %
 \begin{frame}{PGA - cont}
@@ -405,6 +380,10 @@ However, when the PGA op-amp is configured as a unity gain buffer, there are no 
 \end{figure}
 \end{frame}
 
+\begin{frame}{ADC}
+\input{circuits/strong_arm.tex}
+\end{frame}
+%
 \subsection{Problems}
 \begin{frame} {Remarks on Potential Problems}
 \begin{itemize}
