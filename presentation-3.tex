@@ -97,10 +97,11 @@
 
 \begin{frame}{Key Performance Metrics}
 \begin{itemize}
-    \item Average power consumption: 100 kW
+    \item Worst-case error: 3 LSB
+    \item Average power consumption: 11 mW
     \item Die size: 0.1639 mm$^2$
     \item Unit cost: 1.64 cents (without packaging)
-    \item Minimum supply for $<10$ LSB error: 9 V
+    \item Minimum supply for $<3$ LSB error: 1.4 V
 \end{itemize}
 \end{frame}
 
@@ -190,6 +191,16 @@ During our final stages of design, we ran into some major issues that either aro
 \end{block}
 \end{frame}
 %
+\begin{frame}{Design}
+\begin{itemize}
+    \item $V_{ref} = V_{th} \ln(n) \frac{R2}{R1} + V_{be}$
+    \item $V_{be}$ has a coefficient of -1.8 mV/K for our diodes
+    \item Sets $V_{be} = $ 662.4 mV
+    \item For $n = 8$, $\frac{R2}{R1} = 10$, actual ratio $\approx 8.5$
+    \item For max size diodes, $I = 600$ nA for our $V_{be}$
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Schematic}
 \begin{center}
     \input{circuits/bandgap_circuit}
@@ -408,8 +419,6 @@ Die Area: 3 um$^2$
 \end{figure}
 \end{frame}
 
-\section{Notable Integration Details}
-\subsection{Clocking Details}
 \begin{frame}{Clocking with the PGA and ADC}
 \begin{itemize}
 \item Synchronized PGA "$\phi_1$", the "sample" phase, with the ADC's "compare" phase, and the PGA's "$\phi_2$, or "amplify", with the ADC's "load" phase
@@ -420,15 +429,24 @@ Die Area: 3 um$^2$
 \end{frame}
 %
 
-\subsection{Problems}
-\begin{frame} {Remarks on Potential Problems}
+\section{Conclusions}
+\subsection{Lessons Learned}
+\begin{frame}{Lessons Learned}
 \begin{itemize}
-\item Ensure band gap reference and voltage regulators work!
+\item Make running tests easy, test often
+\item There are no such things as 'small' changes
+\item Having a good band gap is \textbf{extremely} important for the performance of the circuit
 \begin{itemize}
-\item Buggy band gap and unstable regulated voltages caused LOTS of trouble even during ideal integration
+\item PSR + start-up circuit
 \end{itemize}
-\item PGA needs to be able to hold its amplified voltage for as long as possible, without drooping too far away from its initial position
-\item Temperature actually hasn't seemed to be too big of a problem so far, though they gave the biggest problems during labs 4 and 5
+\item Small capacitors and leaky transistors are problematic for maintaining a voltage
+\begin{itemize}
+\item Charge pump
+\end{itemize}
+\item Erratic or spiky behavior can be handled with fast amps
+\begin{itemize}
+\item Use smaller lengths and bigger widths
+\end{itemize}
 \end{itemize}
 \end{frame}
 
